@@ -22,12 +22,11 @@ class MenuView: UIViewController {
     }()
     
     override func viewDidLoad() {
-        setupView()
         super.viewDidLoad()
+        setupView()
     }
     
     private func setupView(){
-        print("hello")
         self.view.backgroundColor = .white
         self.view.addSubview(self.tableView)
 
