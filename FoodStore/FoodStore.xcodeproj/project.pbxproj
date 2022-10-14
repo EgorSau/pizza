@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20072C8228F9E1AB003E99BA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20072C8128F9E1AB003E99BA /* NetworkService.swift */; };
 		2093622528F862AA00455518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622428F862AA00455518 /* AppDelegate.swift */; };
 		2093622728F862AA00455518 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622628F862AA00455518 /* SceneDelegate.swift */; };
 		2093622928F862AA00455518 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622828F862AA00455518 /* MenuView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20072C8128F9E1AB003E99BA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2093622128F862AA00455518 /* FoodStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2093622428F862AA00455518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2093622628F862AA00455518 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				2093624828F8759100455518 /* PostModel.swift */,
 				2093624B28F879BE00455518 /* MenuModel.swift */,
+				20072C8128F9E1AB003E99BA /* NetworkService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				2093624928F8759100455518 /* PostModel.swift in Sources */,
 				2093624C28F879BE00455518 /* MenuModel.swift in Sources */,
 				2093622928F862AA00455518 /* MenuView.swift in Sources */,
+				20072C8228F9E1AB003E99BA /* NetworkService.swift in Sources */,
 				2093623928F8634300455518 /* TabBarController.swift in Sources */,
 				2093624328F86D1C00455518 /* MenuTableViewCell.swift in Sources */,
 				2093622528F862AA00455518 /* AppDelegate.swift in Sources */,

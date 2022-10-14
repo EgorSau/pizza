@@ -21,14 +21,8 @@ class MenuTableView: UIView {
         return tableView
     }()
     
-    private lazy var topView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-//    var height: CGFloat = 168
-    var height: CGFloat = 50
+//        нужно будет для уплывания баннера
+//    var height: CGFloat = 32
     var dataSource: [PostModel] = []
     
     override init(frame: CGRect) {
@@ -61,39 +55,6 @@ class MenuTableView: UIView {
                                      bottomConstraint
                                     ])
     }
-    
-    private func setupTopView() {
-        
-//        guard let bannerView = BannersCollection().view else { return }
-        guard let categoryView = CategoriesCollection().view else { return }
-        
-        self.addSubview(self.topView)
-//        self.topView.addSubview(bannerView)
-        self.topView.addSubview(categoryView)
-        
-        let topConstraint = self.topView.topAnchor.constraint(equalTo: self.tableView.topAnchor)
-        let leadingConstraint = self.topView.leadingAnchor.constraint(equalTo: self.tableView.leadingAnchor)
-        let trailingConstraint = self.topView.trailingAnchor.constraint(equalTo: self.tableView.trailingAnchor)
-//        let bottomConstraint = self.topView.bottomAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 1400)
-        let height = self.topView.heightAnchor.constraint(equalToConstant: self.height)
-        
-//        let bannerTop = bannerView.topAnchor.constraint(equalTo: self.topView.topAnchor)
-//        let bannerHeight = bannerView.heightAnchor.constraint(equalToConstant: 112)
-        let categoryHeight = categoryView.heightAnchor.constraint(equalToConstant: 32)
-//        let categoryTop = categoryView.topAnchor.constraint(equalTo: bannerView.bottomAnchor)
-        
-        NSLayoutConstraint.activate([
-                                    topConstraint,
-                                    leadingConstraint,
-                                    trailingConstraint,
-//                                    bottomConstraint,
-                                    height,
-//                                    bannerTop,
-//                                    bannerHeight,
-                                    categoryHeight,
-//                                    categoryTop
-                                    ])
-    }
 }
 
 extension MenuTableView: MenuViewDelegateProtocol {
@@ -101,7 +62,8 @@ extension MenuTableView: MenuViewDelegateProtocol {
     func tableHeightUpdate(newHeight: CGFloat) {
         UIView.animate(withDuration: 0.3, delay: 0.0) {
             self.tableView.beginUpdates()
-            self.height = newHeight
+//        нужно будет для уплывания баннера
+//            self.height = newHeight
             self.tableView.endUpdates()
             self.layoutIfNeeded()
         }
@@ -131,14 +93,27 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.height
+//        нужно будет для уплывания баннера
+//        return self.height
+        return 32+112-24
     }
+    
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
+        
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.addArrangedSubview(BannersCollection())
+        stackView.addArrangedSubview(CategoriesCollection())
+        stackView.spacing = 24
+        return stackView
+//        нужно будет для уплывания баннера
 //        menuView.menuViewDelegate = self
-//        return self.topView
-//        return BannersCollection().view
-        return CategoriesCollection().view
+    }
+}
+
+extension MenuTableView: TableDelegateProtocol {
+    func updateTable() {
+        self.tableView.reloadData()
     }
 }

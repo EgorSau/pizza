@@ -10,6 +10,6 @@ import UIKit
 class ProfileView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.4784313725, blue: 0.6, alpha: 1)
     }
 }

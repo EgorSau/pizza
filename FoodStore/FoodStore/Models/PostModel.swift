@@ -13,3 +13,7 @@ struct PostModel {
     var description: String
     var price: String
 }
+
+struct CatModel: Decodable {
+    let file: String?
+}

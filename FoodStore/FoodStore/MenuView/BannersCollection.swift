@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BannersCollection: UIViewController {
+class BannersCollection: UIView {
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -28,22 +28,29 @@ class BannersCollection: UIViewController {
         return collectionView
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.setupView()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupView(){
-        self.view.addSubview(self.collectionView)
+        self.addSubview(self.collectionView)
         
-        let topConstraint = self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let leftConstraint = self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let rightConstraint = self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let bottomConstraint = self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        let topConstraint = self.collectionView.topAnchor.constraint(equalTo: self.topAnchor)
+        let leftConstraint = self.collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+        let rightConstraint = self.collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        let height = self.collectionView.heightAnchor.constraint(equalToConstant: 112)
         
         NSLayoutConstraint.activate([
-            topConstraint, leftConstraint, rightConstraint, bottomConstraint
-        ])
+                                    topConstraint,
+                                    leftConstraint,
+                                    rightConstraint,
+                                    height
+                                    ])
     }
 }
 
@@ -60,13 +67,20 @@ extension BannersCollection: UICollectionViewDataSource, UICollectionViewDelegat
             return cell
         }
         cell.backgroundColor = .systemPink
-        cell.uploadPhotos(for: indexPath)
+        cell.layer.cornerRadius = 10
+        cell.clipsToBounds = true
+        cell.contentMode = .scaleAspectFit
+        
+        //MARK: function for assets
+//        cell.uploadPhotos(for: indexPath)
+        
+        //MARK: function for API
+        NetworkService().urlRequest { image in
+            cell.uploadPhotos(for: image)
+        }
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let spacing = (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing
-//        let collection = BannersCollectionCell()
-//        return collection.itemSize(for: collectionView.frame.width, with: spacing ?? 0)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 300, height: 112)
+    }
 }

@@ -13,6 +13,7 @@ protocol MenuViewDelegateProtocol: AnyObject {
 
 class MenuView: UIViewController {
     
+// нужно будет для уплывания баннера
 //    weak var menuViewDelegate: MenuViewDelegateProtocol?
     
     private lazy var tableView: MenuTableView = {

@@ -10,7 +10,7 @@ import UIKit
 class ContactsView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .yellow
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 0.6784313725, blue: 0.7529411765, alpha: 1)
     }
 }
 

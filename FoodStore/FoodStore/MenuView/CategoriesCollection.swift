@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoriesCollection: UIViewController {
+class CategoriesCollection: UIView {
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -28,24 +28,27 @@ class CategoriesCollection: UIViewController {
         return collectionView
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.setupView()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupView(){
-        self.view.addSubview(self.collectionView)
+        self.addSubview(self.collectionView)
         
-        let topConstraint = self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let leftConstraint = self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16)
-        let rightConstraint = self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
-        let bottomConstraint = self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        let topConstraint = self.collectionView.topAnchor.constraint(equalTo: self.topAnchor)
+        let leftConstraint = self.collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+        let rightConstraint = self.collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        let height = self.collectionView.heightAnchor.constraint(equalToConstant: 32)
         
         NSLayoutConstraint.activate([
                                     topConstraint,
                                     leftConstraint,
                                     rightConstraint,
-                                    bottomConstraint
+                                    height
                                     ])
     }
 }
@@ -53,7 +56,7 @@ class CategoriesCollection: UIViewController {
 extension CategoriesCollection: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,14 +64,11 @@ extension CategoriesCollection: UICollectionViewDataSource, UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-//        cell.backgroundColor = .systemPink
         cell.uploadButtons(for: indexPath)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let spacing = (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing
-        let collection = CategoriesCollectionCell()
-        return collection.itemSize(for: collectionView.frame.width, with: spacing ?? 0)
+        return CGSize(width: 88, height: 32)
     }
 }
