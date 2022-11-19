@@ -33,6 +33,7 @@ class MenuTableViewCell: UITableViewCell {
     private lazy var pizzaImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
+        image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -104,8 +105,8 @@ class MenuTableViewCell: UITableViewCell {
         ])
 
         //MARK: descriptionStack
-        self.descriptionStack.addArrangedSubview(descriptionLabel)
         self.descriptionStack.addArrangedSubview(titleLabel)
+        self.descriptionStack.addArrangedSubview(descriptionLabel)
         let leadingTitleConstraint = self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 180)
 
         NSLayoutConstraint.activate([

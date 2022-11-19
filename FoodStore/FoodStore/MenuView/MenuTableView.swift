@@ -20,24 +20,32 @@ class MenuTableView: UIView {
         tableView.estimatedRowHeight = 44
         return tableView
     }()
-    
-//        нужно будет для уплывания баннера
-//    var height: CGFloat = 32
+
+    var height: CGFloat = 32+112+24
     var dataSource: [PostModel] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupTableView()
-//        self.setupTopView()
-        self.loadDataToDataSource(fromModel: Presenter())
+        self.loadDataToDataSource(fromModel: Presenter(), and: "Комбо")
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func loadDataToDataSource(fromModel: Presenter){
-        fromModel.addPostsIntoArray()
+//    func loadDataToDataSource(fromModel: Presenter){
+//        fromModel.addPizzaPostsIntoArray()
+//        self.dataSource = fromModel.postArray
+//    }
+    
+    func loadDataToDataSource(fromModel: Presenter, and category: String){
+        if category == "Пицца" {
+            fromModel.addPizzaPostsIntoArray()
+        } else {
+            fromModel.addComboPostsIntoArray()
+        }
+
         self.dataSource = fromModel.postArray
     }
     
@@ -62,8 +70,7 @@ extension MenuTableView: MenuViewDelegateProtocol {
     func tableHeightUpdate(newHeight: CGFloat) {
         UIView.animate(withDuration: 0.3, delay: 0.0) {
             self.tableView.beginUpdates()
-//        нужно будет для уплывания баннера
-//            self.height = newHeight
+            self.height = newHeight
             self.tableView.endUpdates()
             self.layoutIfNeeded()
         }
@@ -87,25 +94,25 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
                                                     title: post.title,
                                                     description: post.description,
                                                     price: post.price)
-
         cell.setup(with: viewModel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        нужно будет для уплывания баннера
-//        return self.height
-        return 32+112-24
+        return self.height
     }
-    
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let stackView = UIStackView()
+        let banners = BannersCollection()
+        let categories = CategoriesCollection()
         stackView.axis = .vertical
-        stackView.addArrangedSubview(BannersCollection())
-        stackView.addArrangedSubview(CategoriesCollection())
-        stackView.spacing = 24
+        stackView.addArrangedSubview(banners)
+        stackView.addArrangedSubview(categories)
+        banners.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        categories.topAnchor.constraint(equalTo: banners.bottomAnchor).isActive = true
+        categories.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         return stackView
 //        нужно будет для уплывания баннера
 //        menuView.menuViewDelegate = self

@@ -39,16 +39,20 @@ class CategoriesCollection: UIView {
     private func setupView(){
         self.addSubview(self.collectionView)
         
-        let topConstraint = self.collectionView.topAnchor.constraint(equalTo: self.topAnchor)
-        let leftConstraint = self.collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-        let rightConstraint = self.collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        let top = self.collectionView.topAnchor.constraint(equalTo: self.topAnchor)
+        let left = self.collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+        let right = self.collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        let bottom = self.collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -24)
         let height = self.collectionView.heightAnchor.constraint(equalToConstant: 32)
-        
+//        let width = self.collectionView.widthAnchor.constraint(equalToConstant: 88)
+//
         NSLayoutConstraint.activate([
-                                    topConstraint,
-                                    leftConstraint,
-                                    rightConstraint,
-                                    height
+                                    top,
+                                    left,
+                                    right,
+                                    bottom,
+                                    height,
+//                                    width
                                     ])
     }
 }

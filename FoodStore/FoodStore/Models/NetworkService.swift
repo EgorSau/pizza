@@ -20,7 +20,7 @@ class NetworkService {
                 guard let data = data, error == nil else { return }
                 do  {
                     let response = try JSONDecoder().decode(CatModel.self, from: data)
-                    print("SUCCESS: \(response)")
+//                    print("SUCCESS: \(response)")
                     //MARK: Pictures data
                     guard let pictureName = response.file else { return }
                     guard let url = URL(string: pictureName)

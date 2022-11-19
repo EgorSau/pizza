@@ -31,12 +31,12 @@ class BannersCollectionCell: UICollectionViewCell {
         let centerY = self.photoImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
         let left = self.photoImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor)
         let right = self.photoImage.rightAnchor.constraint(equalTo: self.contentView.rightAnchor)
-        let photoAspectRatio = self.photoImage.heightAnchor.constraint(equalTo: self.photoImage.widthAnchor, multiplier: 1.0)
+//        let photoAspectRatio = self.photoImage.heightAnchor.constraint(equalTo: self.photoImage.widthAnchor, multiplier: 1.0)
         
         NSLayoutConstraint.activate([
                                     topConstraint,
                                     centerY,
-                                    photoAspectRatio,
+//                                    photoAspectRatio,
                                     left,
                                     right
                                     ])
