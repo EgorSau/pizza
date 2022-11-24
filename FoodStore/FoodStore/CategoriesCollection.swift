@@ -1,5 +1,5 @@
 //
-//  BannersCollection.swift
+//  CategoriesCollection.swift
 //  FoodStore
 //
 //  Created by Egor SAUSHKIN on 14.10.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BannersCollection: UIView {
+class CategoriesCollection: UIView {
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -22,17 +22,19 @@ class BannersCollection: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(BannersCollectionCell.self, forCellWithReuseIdentifier: "BannerCell")
+        collectionView.register(CategoriesCollectionCell.self, forCellWithReuseIdentifier: "CategoryCell")
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DefaultCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
+    var closure: ((IndexPath) -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.collectionView.reloadData()
         self.setupView()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -40,47 +42,38 @@ class BannersCollection: UIView {
     private func setupView(){
         self.addSubview(self.collectionView)
         
-        let topConstraint = self.collectionView.topAnchor.constraint(equalTo: self.topAnchor)
-        let leftConstraint = self.collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
-        let rightConstraint = self.collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        let height = self.collectionView.heightAnchor.constraint(equalToConstant: 112)
-        
+        let top = self.collectionView.topAnchor.constraint(equalTo: self.topAnchor)
+        let left = self.collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+        let right = self.collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        let height = self.collectionView.heightAnchor.constraint(equalToConstant: 50)
+
         NSLayoutConstraint.activate([
-                                    topConstraint,
-                                    leftConstraint,
-                                    rightConstraint,
+                                    top,
+                                    left,
+                                    right,
                                     height
                                     ])
     }
 }
 
-
-extension BannersCollection: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+extension CategoriesCollection: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCell", for: indexPath) as? BannersCollectionCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as? CategoriesCollectionCell else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-        cell.backgroundColor = .systemPink
-        cell.layer.cornerRadius = 10
-        cell.clipsToBounds = true
-        cell.contentMode = .scaleAspectFit
-        
-        //MARK: function for assets
-//        cell.uploadPhotos(for: indexPath)
-        
-        //MARK: function for API
-        NetworkService().urlRequest { image in
-            cell.uploadPhotos(for: image)
-        }
+        cell.uploadButtons(for: indexPath)
+        self.closure?(indexPath)
+//        cell.indexValue = indexPath
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 112)
+        return CGSize(width: 88, height: 32)
     }
 }

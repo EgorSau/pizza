@@ -64,3 +64,4 @@ struct ComboPriceModel {
     static let name = ComboPriceModel()
     let price = "от 222 р"
 }
+

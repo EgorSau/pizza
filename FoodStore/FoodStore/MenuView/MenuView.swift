@@ -7,14 +7,7 @@
 
 import UIKit
 
-protocol MenuViewDelegateProtocol: AnyObject {
-    func tableHeightUpdate(newHeight: CGFloat)
-}
-
 class MenuView: UIViewController {
-    
-// нужно будет для уплывания баннера
-//    weak var menuViewDelegate: MenuViewDelegateProtocol?
     
     private lazy var tableView: MenuTableView = {
         let tableView = MenuTableView()

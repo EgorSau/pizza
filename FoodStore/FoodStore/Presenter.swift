@@ -10,6 +10,23 @@ import UIKit
 class Presenter {
     
     var postArray = [PostModel]()
+    var category: String
+    
+    init (category: String) {
+        self.category = category
+        postsForCategory(category: category)
+    }
+    
+    func postsForCategory(category: String) {
+//        print("?????")
+        if category == "Пицца" {
+//            print("1")
+            addPizzaPostsIntoArray()
+        } else {
+//            print("2")
+            addComboPostsIntoArray()
+        }
+    }
     
     func addPizzaPostsIntoArray(){
         let post1 = PostModel(image: PizzaImagesModel.name.pizza1,

@@ -7,12 +7,8 @@
 
 import UIKit
 
-protocol TableDelegateProtocol {
-    func updateTable()
-}
-
 class CategoriesCollectionCell: UICollectionViewCell {
-    
+
     lazy var button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +22,7 @@ class CategoriesCollectionCell: UICollectionViewCell {
         return button
     }()
     
-    var delegate: TableDelegateProtocol?
+    var isFlagged = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,25 +42,40 @@ class CategoriesCollectionCell: UICollectionViewCell {
                                     ])
     }
 
-    func uploadButtons(for indexPath: IndexPath){
+    func uploadButtons(for indexPath: IndexPath) {
         let indexValue = Int(indexPath.row)
-        let buttonsArray = ["Пицца", "Комбо", "Десерты", "Напитки", "Суши", "Бургеры"]
-        self.button.setTitle(buttonsArray[indexValue], for: .normal)
+        let selectedButton = ButtonsModel.buttonsArray[indexValue]
+        self.button.setTitle(selectedButton, for: .normal)
+//        print("1")
+//        print(ButtonsModel.flagsArray)
+        if indexValue == 0 {
+            button.backgroundColor = ButtonsModel.ButtonColors.backgroundPink
+            button.setTitleColor(ButtonsModel.ButtonColors.titleBrightPink, for: .selected)
+            ButtonsModel.flagsArray[indexValue] = true
+        }
     }
     
     @objc
     func buttonPressed(){
-        if button.isSelected == false {
-            button.backgroundColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.2)
-            button.setTitleColor(UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 1), for: .selected)
-            button.isSelected = true
-            self.delegate?.updateTable()
-        }
-        else {
-            button.backgroundColor = .white
-            button.setTitleColor(UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.4), for: .selected)
-            button.isSelected = false
+//        print("2")
+//        print(ButtonsModel.flagsArray)
+        button.backgroundColor = ButtonsModel.ButtonColors.backgroundPink
+        button.setTitleColor(ButtonsModel.ButtonColors.titleBrightPink, for: .selected)
+        //flag for selection -> index comes from where?
+        ButtonsModel.flagsArray[1] = true
+//        print("3")
+//        print(ButtonsModel.flagsArray)
+        //flag for previous to be clear
+        clearFlag(indexSelected: 1)
+    }
+    
+    func clearFlag(indexSelected: Int){
+//        print("4")
+        ButtonsModel.flagsArray.enumerated().forEach { index, flag in
+            if flag == true && index != indexSelected {
+                button.backgroundColor = ButtonsModel.ButtonColors.backgroundWhite
+                button.setTitleColor(ButtonsModel.ButtonColors.titleLightPink, for: .selected)
+            }
         }
     }
 }
-

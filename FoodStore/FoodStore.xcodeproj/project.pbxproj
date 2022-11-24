@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200594A3292EC3FA0052725A /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200594A2292EC3FA0052725A /* ButtonsModel.swift */; };
 		20072C8228F9E1AB003E99BA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20072C8128F9E1AB003E99BA /* NetworkService.swift */; };
 		2093622528F862AA00455518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622428F862AA00455518 /* AppDelegate.swift */; };
 		2093622728F862AA00455518 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622628F862AA00455518 /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		200594A2292EC3FA0052725A /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
 		20072C8128F9E1AB003E99BA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2093622128F862AA00455518 /* FoodStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2093622428F862AA00455518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2005949F292EC3270052725A /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				2093623828F8634300455518 /* TabBarController.swift */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
+		200594A0292EC3320052725A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2093624F28F8AFFA00455518 /* CategoriesCollection.swift */,
+				2093625528F8B8B700455518 /* CategoriesCollectionCell.swift */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		200594A1292EC33C0052725A /* Banners */ = {
+			isa = PBXGroup;
+			children = (
+				2093625128F8B01900455518 /* BannersCollection.swift */,
+				2093625328F8B0CF00455518 /* BannersCollectionCell.swift */,
+			);
+			path = Banners;
+			sourceTree = "<group>";
+		};
 		2093621828F862A900455518 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +124,9 @@
 		2093623E28F863E100455518 /* VIews */ = {
 			isa = PBXGroup;
 			children = (
+				2005949F292EC3270052725A /* TabBar */,
+				200594A1292EC33C0052725A /* Banners */,
+				200594A0292EC3320052725A /* Categories */,
 				2093624128F86D0300455518 /* MenuView */,
 				2093623A28F863A900455518 /* ContactsView.swift */,
 				2093623C28F863CB00455518 /* ProfileView.swift */,
@@ -110,10 +141,6 @@
 				2093622828F862AA00455518 /* MenuView.swift */,
 				2093624D28F87E0300455518 /* MenuTableView.swift */,
 				2093624228F86D1C00455518 /* MenuTableViewCell.swift */,
-				2093624F28F8AFFA00455518 /* CategoriesCollection.swift */,
-				2093625528F8B8B700455518 /* CategoriesCollectionCell.swift */,
-				2093625128F8B01900455518 /* BannersCollection.swift */,
-				2093625328F8B0CF00455518 /* BannersCollectionCell.swift */,
 			);
 			path = MenuView;
 			sourceTree = "<group>";
@@ -121,7 +148,6 @@
 		2093624428F8735D00455518 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				2093623828F8634300455518 /* TabBarController.swift */,
 				2093624528F8736800455518 /* Presenter.swift */,
 			);
 			name = Presenter;
@@ -130,9 +156,10 @@
 		2093624728F8758400455518 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20072C8128F9E1AB003E99BA /* NetworkService.swift */,
 				2093624828F8759100455518 /* PostModel.swift */,
 				2093624B28F879BE00455518 /* MenuModel.swift */,
-				20072C8128F9E1AB003E99BA /* NetworkService.swift */,
+				200594A2292EC3FA0052725A /* ButtonsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +250,7 @@
 				2093622928F862AA00455518 /* MenuView.swift in Sources */,
 				20072C8228F9E1AB003E99BA /* NetworkService.swift in Sources */,
 				2093623928F8634300455518 /* TabBarController.swift in Sources */,
+				200594A3292EC3FA0052725A /* ButtonsModel.swift in Sources */,
 				2093624328F86D1C00455518 /* MenuTableViewCell.swift in Sources */,
 				2093622528F862AA00455518 /* AppDelegate.swift in Sources */,
 				2093623B28F863A900455518 /* ContactsView.swift in Sources */,

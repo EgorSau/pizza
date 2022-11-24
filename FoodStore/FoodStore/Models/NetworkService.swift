@@ -9,14 +9,13 @@ import UIKit
 
 class NetworkService {
     func urlRequest(completion: @escaping (UIImage) -> Void) {
-//        var imagesArray = [UIImage]()
         let stringUrl = "https://aws.random.cat/meow"
         guard let url = URL(string: stringUrl) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         DispatchQueue.global(qos: .background).async {
-            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            let task = URLSession.shared.dataTask(with: request) { data, resp, error in
                 guard let data = data, error == nil else { return }
                 do  {
                     let response = try JSONDecoder().decode(CatModel.self, from: data)
@@ -31,16 +30,11 @@ class NetworkService {
                     do {
                         let data = try Data(contentsOf: url, options: [])
                         guard let image = UIImage(data: data) else { return }
-//                        imagesArray.append(image)
-//                        print("++++++++++++++++++")
-//                        print(imagesArray)
-//                        print("++++++++++++++++++")
                         completion(image)
                     }
                     catch {
                         print(error.localizedDescription)
                     }
-//                    completion(imagesArray)
                 }
                 catch {
                     print(error)

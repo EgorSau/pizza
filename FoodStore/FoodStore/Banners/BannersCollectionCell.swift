@@ -9,7 +9,7 @@ import UIKit
 
 class BannersCollectionCell: UICollectionViewCell {
     
-    private lazy var photoImage: UIImageView = {
+    lazy var photoImage: UIImageView = {
         let photoImage = UIImageView()
         photoImage.translatesAutoresizingMaskIntoConstraints = false
         return photoImage
@@ -31,12 +31,10 @@ class BannersCollectionCell: UICollectionViewCell {
         let centerY = self.photoImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
         let left = self.photoImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor)
         let right = self.photoImage.rightAnchor.constraint(equalTo: self.contentView.rightAnchor)
-//        let photoAspectRatio = self.photoImage.heightAnchor.constraint(equalTo: self.photoImage.widthAnchor, multiplier: 1.0)
         
         NSLayoutConstraint.activate([
                                     topConstraint,
                                     centerY,
-//                                    photoAspectRatio,
                                     left,
                                     right
                                     ])

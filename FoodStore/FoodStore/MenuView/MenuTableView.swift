@@ -18,35 +18,26 @@ class MenuTableView: UIView {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+        tableView.tableHeaderView = BannersCollection(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 112))
         return tableView
     }()
-
-    var height: CGFloat = 32+112+24
+    
+    var height: CGFloat = 50
     var dataSource: [PostModel] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupTableView()
-        self.loadDataToDataSource(fromModel: Presenter(), and: "Комбо")
+        self.loadDataToDataSource(fromModel: Presenter(category: "Пицца"))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    func loadDataToDataSource(fromModel: Presenter){
-//        fromModel.addPizzaPostsIntoArray()
-//        self.dataSource = fromModel.postArray
-//    }
-    
-    func loadDataToDataSource(fromModel: Presenter, and category: String){
-        if category == "Пицца" {
-            fromModel.addPizzaPostsIntoArray()
-        } else {
-            fromModel.addComboPostsIntoArray()
-        }
-
+    func loadDataToDataSource(fromModel: Presenter){
         self.dataSource = fromModel.postArray
+//        self.tableView.reloadData()
     }
     
     private func setupTableView() {
@@ -65,22 +56,9 @@ class MenuTableView: UIView {
     }
 }
 
-extension MenuTableView: MenuViewDelegateProtocol {
-    
-    func tableHeightUpdate(newHeight: CGFloat) {
-        UIView.animate(withDuration: 0.3, delay: 0.0) {
-            self.tableView.beginUpdates()
-            self.height = newHeight
-            self.tableView.endUpdates()
-            self.layoutIfNeeded()
-        }
-    }
-}
-
 extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = self.dataSource.count
-        return count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,8 +66,7 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-        
-        let post = self.dataSource[indexPath.row]
+        let post = dataSource[indexPath.row]
         let viewModel = MenuTableViewCell.ViewModel(image: post.image,
                                                     title: post.title,
                                                     description: post.description,
@@ -99,28 +76,20 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.height
+        return height
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let stackView = UIStackView()
-        let banners = BannersCollection()
-        let categories = CategoriesCollection()
-        stackView.axis = .vertical
-        stackView.addArrangedSubview(banners)
-        stackView.addArrangedSubview(categories)
-        banners.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        categories.topAnchor.constraint(equalTo: banners.bottomAnchor).isActive = true
-        categories.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
-        return stackView
-//        нужно будет для уплывания баннера
-//        menuView.menuViewDelegate = self
-    }
-}
-
-extension MenuTableView: TableDelegateProtocol {
-    func updateTable() {
-        self.tableView.reloadData()
+        let view = CategoriesCollection()
+        view.closure = { [weak self] indexPath in
+//            guard let self = self else { return }
+            self?.loadDataToDataSource(fromModel: Presenter(category: ButtonsModel().returnButtonName(for: indexPath)))
+//            print(ButtonsModel().returnButtonName(for: indexPath))
+//            print("CLOSURE WORKS")
+        }
+//        tableView.beginUpdates()
+//        tableView.reloadData()
+//        tableView.endUpdates()
+        return view
     }
 }
