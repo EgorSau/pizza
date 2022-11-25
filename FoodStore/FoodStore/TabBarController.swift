@@ -49,17 +49,17 @@ class TabBarController: UITabBarController {
             }
         }
 
-        var arrayVC: [UIViewController] = [MenuView(), ContactsView(), ProfileView(), BasketView()]
+        var arrayVC: [UIViewController] = [MenuViewController(), ContactsView(), ProfileView(), BasketView()]
         
-        arrayVC[0] = UINavigationController(rootViewController: MenuView())
+        arrayVC[0] = UINavigationController(rootViewController: MenuViewController())
         arrayVC[1] = UINavigationController(rootViewController: ContactsView())
         arrayVC[2] = UINavigationController(rootViewController: ProfileView())
         arrayVC[3] = UINavigationController(rootViewController: BasketView())
         
         self.viewControllers = arrayVC.map({ tabBarItem in
             switch tabBarItem {
-            case MenuView():
-                return UINavigationController(rootViewController: MenuView())
+            case MenuViewController():
+                return UINavigationController(rootViewController: MenuViewController())
             case ContactsView():
                 return ContactsView()
             case ProfileView():

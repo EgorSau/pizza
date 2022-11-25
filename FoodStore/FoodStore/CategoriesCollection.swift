@@ -67,7 +67,7 @@ extension CategoriesCollection: UICollectionViewDataSource, UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-        cell.uploadButtons(for: indexPath)
+//        cell.uploadButtons(for: indexPath)
         self.closure?(indexPath)
 //        cell.indexValue = indexPath
         return cell

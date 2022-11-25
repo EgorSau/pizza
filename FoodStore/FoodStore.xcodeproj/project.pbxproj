@@ -10,7 +10,7 @@
 		20072C8228F9E1AB003E99BA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20072C8128F9E1AB003E99BA /* NetworkService.swift */; };
 		2093622528F862AA00455518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622428F862AA00455518 /* AppDelegate.swift */; };
 		2093622728F862AA00455518 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622628F862AA00455518 /* SceneDelegate.swift */; };
-		2093622928F862AA00455518 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622828F862AA00455518 /* MenuView.swift */; };
+		2093622928F862AA00455518 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093622828F862AA00455518 /* MenuViewController.swift */; };
 		2093622E28F862AD00455518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2093622D28F862AD00455518 /* Assets.xcassets */; };
 		2093623128F862AD00455518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2093622F28F862AD00455518 /* LaunchScreen.storyboard */; };
 		2093623928F8634300455518 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093623828F8634300455518 /* TabBarController.swift */; };
@@ -20,7 +20,6 @@
 		2093624328F86D1C00455518 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093624228F86D1C00455518 /* MenuTableViewCell.swift */; };
 		2093624628F8736800455518 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093624528F8736800455518 /* Mock.swift */; };
 		2093624928F8759100455518 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093624828F8759100455518 /* Food.swift */; };
-		2093624E28F87E0300455518 /* MenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093624D28F87E0300455518 /* MenuTableView.swift */; };
 		2093625028F8AFFA00455518 /* CategoriesCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093624F28F8AFFA00455518 /* CategoriesCollection.swift */; };
 		2093625228F8B01A00455518 /* BannersCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093625128F8B01900455518 /* BannersCollection.swift */; };
 		2093625428F8B0CF00455518 /* BannersCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093625328F8B0CF00455518 /* BannersCollectionCell.swift */; };
@@ -30,6 +29,7 @@
 		37501C0829313695005A9A9F /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37501C0729313695005A9A9F /* Cat.swift */; };
 		37501C0A293137C7005A9A9F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37501C09293137C7005A9A9F /* Category.swift */; };
 		37501C0C29313898005A9A9F /* PromoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37501C0B29313898005A9A9F /* PromoBanner.swift */; };
+		37501C0E29313D0E005A9A9F /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37501C0D29313D0E005A9A9F /* UIViewController+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		2093622128F862AA00455518 /* FoodStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2093622428F862AA00455518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2093622628F862AA00455518 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2093622828F862AA00455518 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		2093622828F862AA00455518 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		2093622D28F862AD00455518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2093623028F862AD00455518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2093623228F862AD00455518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +48,6 @@
 		2093624228F86D1C00455518 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		2093624528F8736800455518 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		2093624828F8759100455518 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
-		2093624D28F87E0300455518 /* MenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableView.swift; sourceTree = "<group>"; };
 		2093624F28F8AFFA00455518 /* CategoriesCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollection.swift; sourceTree = "<group>"; };
 		2093625128F8B01900455518 /* BannersCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersCollection.swift; sourceTree = "<group>"; };
 		2093625328F8B0CF00455518 /* BannersCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersCollectionCell.swift; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		37501C0729313695005A9A9F /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		37501C09293137C7005A9A9F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		37501C0B29313898005A9A9F /* PromoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoBanner.swift; sourceTree = "<group>"; };
+		37501C0D29313D0E005A9A9F /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +142,7 @@
 		2093624128F86D0300455518 /* MenuView */ = {
 			isa = PBXGroup;
 			children = (
-				2093622828F862AA00455518 /* MenuView.swift */,
-				2093624D28F87E0300455518 /* MenuTableView.swift */,
+				2093622828F862AA00455518 /* MenuViewController.swift */,
 				2093624228F86D1C00455518 /* MenuTableViewCell.swift */,
 			);
 			path = MenuView;
@@ -184,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				2093623E28F863E100455518 /* VIews */,
+				37501C0F29313D12005A9A9F /* Extensions */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -221,6 +221,14 @@
 				374D69F329312EDC00C7A5F4 /* NetworkClient */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		37501C0F29313D12005A9A9F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				37501C0D29313D0E005A9A9F /* UIViewController+extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +305,7 @@
 				2093624628F8736800455518 /* Mock.swift in Sources */,
 				2093624928F8759100455518 /* Food.swift in Sources */,
 				374D69F72931335900C7A5F4 /* Mapper.swift in Sources */,
-				2093622928F862AA00455518 /* MenuView.swift in Sources */,
+				2093622928F862AA00455518 /* MenuViewController.swift in Sources */,
 				20072C8228F9E1AB003E99BA /* NetworkService.swift in Sources */,
 				2093623928F8634300455518 /* TabBarController.swift in Sources */,
 				37501C0829313695005A9A9F /* Cat.swift in Sources */,
@@ -309,8 +317,8 @@
 				2093625228F8B01A00455518 /* BannersCollection.swift in Sources */,
 				2093625628F8B8B700455518 /* CategoriesCollectionCell.swift in Sources */,
 				2093623D28F863CB00455518 /* ProfileView.swift in Sources */,
+				37501C0E29313D0E005A9A9F /* UIViewController+extensions.swift in Sources */,
 				2093624028F863F800455518 /* BasketView.swift in Sources */,
-				2093624E28F87E0300455518 /* MenuTableView.swift in Sources */,
 				2093622728F862AA00455518 /* SceneDelegate.swift in Sources */,
 				374D69F529312F6C00C7A5F4 /* NetworkError.swift in Sources */,
 				37501C0A293137C7005A9A9F /* Category.swift in Sources */,

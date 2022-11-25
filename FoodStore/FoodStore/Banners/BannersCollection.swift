@@ -74,10 +74,6 @@ extension BannersCollection: UICollectionViewDataSource, UICollectionViewDelegat
         //MARK: function for assets
 //        cell.uploadPhotos(for: indexPath)
         
-        //MARK: function for API
-        NetworkService().urlRequest { image in
-            cell.uploadPhotos(for: image)
-        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

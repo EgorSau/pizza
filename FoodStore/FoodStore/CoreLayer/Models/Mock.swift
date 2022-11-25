@@ -28,26 +28,24 @@ struct Mock {
                 ]
             ],
             .category: [
-                [
-                    Category(name: "Пицца", priority: 1, isSelected: true): [
-                        Pizza(image: "1", title: "1", description: nil, price: 1),
-                        Pizza(image: "2", title: "2", description: nil, price: 2),
-                        Pizza(image: "3", title: "3", description: nil, price: 3),
-                        Pizza(image: "4", title: "4", description: nil, price: 4),
-                    ],
-                    Category(name: "Напитки", priority: 2, isSelected: false): [
-                        Pizza(image: "1", title: "1", description: nil, price: 1),
-                        Pizza(image: "2", title: "2", description: nil, price: 2),
-                        Pizza(image: "3", title: "3", description: nil, price: 3),
-                        Pizza(image: "4", title: "4", description: nil, price: 4),
-                    ],
-                    Category(name: "Соусы", priority: 3, isSelected: false): [
-                        Pizza(image: "1", title: "1", description: nil, price: 1),
-                        Pizza(image: "2", title: "2", description: nil, price: 2),
-                        Pizza(image: "3", title: "3", description: nil, price: 3),
-                        Pizza(image: "4", title: "4", description: nil, price: 4),
-                    ],
-                ]
+                Category(name: "Пицца", priority: 1, isSelected: true): [
+                    Pizza(image: "1", title: "1", description: nil, price: 1),
+                    Pizza(image: "2", title: "2", description: nil, price: 2),
+                    Pizza(image: "3", title: "3", description: nil, price: 3),
+                    Pizza(image: "4", title: "4", description: nil, price: 4),
+                ],
+                Category(name: "Напитки", priority: 2, isSelected: false): [
+                    Drink(image: "1", title: "1", description: nil, price: 1),
+                    Drink(image: "2", title: "2", description: nil, price: 2),
+                    Drink(image: "3", title: "3", description: nil, price: 3),
+                    Drink(image: "4", title: "4", description: nil, price: 4),
+                ],
+                Category(name: "Соусы", priority: 3, isSelected: false): [
+                    Sauce(image: "1", title: "1", description: nil, price: 1),
+                    Sauce(image: "2", title: "2", description: nil, price: 2),
+                    Sauce(image: "3", title: "3", description: nil, price: 3),
+                    Sauce(image: "4", title: "4", description: nil, price: 4),
+                ],
             ]
         ]
     }
