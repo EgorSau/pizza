@@ -9,6 +9,9 @@ import UIKit
 
 final class MenuViewController: UIViewController {
     
+    
+    // MARK: Private Properties
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -20,11 +23,17 @@ final class MenuViewController: UIViewController {
     
     private var mock: [Section: Any] = [:]
     
+    
+    // MARK: Init
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mock = Mock.shared.createMockData()
         self.setupView()
     }
+    
+    
+    // MARK: Private
     
     private func setupView(){
         self.view.backgroundColor = .white
@@ -45,6 +54,8 @@ final class MenuViewController: UIViewController {
     }
 }
 
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
