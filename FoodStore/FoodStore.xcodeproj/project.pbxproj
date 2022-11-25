@@ -27,6 +27,8 @@
 		2093625228F8B01A00455518 /* BannersCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093625128F8B01900455518 /* BannersCollection.swift */; };
 		2093625428F8B0CF00455518 /* BannersCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093625328F8B0CF00455518 /* BannersCollectionCell.swift */; };
 		2093625628F8B8B700455518 /* CategoriesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093625528F8B8B700455518 /* CategoriesCollectionCell.swift */; };
+		374D69F529312F6C00C7A5F4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D69F429312F6C00C7A5F4 /* NetworkError.swift */; };
+		374D69F72931335900C7A5F4 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374D69F62931335900C7A5F4 /* Mapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		2093625128F8B01900455518 /* BannersCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersCollection.swift; sourceTree = "<group>"; };
 		2093625328F8B0CF00455518 /* BannersCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersCollectionCell.swift; sourceTree = "<group>"; };
 		2093625528F8B8B700455518 /* CategoriesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionCell.swift; sourceTree = "<group>"; };
+		374D69F429312F6C00C7A5F4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		374D69F62931335900C7A5F4 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,13 +114,10 @@
 		2093622328F862AA00455518 /* FoodStore */ = {
 			isa = PBXGroup;
 			children = (
-				2093623228F862AD00455518 /* Info.plist */,
-				2093622428F862AA00455518 /* AppDelegate.swift */,
-				2093622628F862AA00455518 /* SceneDelegate.swift */,
+				374D69F029312E6100C7A5F4 /* AppDelegate */,
 				2093624A28F8797700455518 /* Resources */,
-				2093624728F8758400455518 /* Models */,
-				2093624428F8735D00455518 /* Presenter */,
-				2093623E28F863E100455518 /* VIews */,
+				374D69F229312ECF00C7A5F4 /* CoreLayer */,
+				374D69F129312E7700C7A5F4 /* PresentationLayer */,
 			);
 			path = FoodStore;
 			sourceTree = "<group>";
@@ -133,6 +134,7 @@
 				2093623F28F863F800455518 /* BasketView.swift */,
 			);
 			name = VIews;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		2093624128F86D0300455518 /* MenuView */ = {
@@ -151,12 +153,12 @@
 				2093624528F8736800455518 /* Presenter.swift */,
 			);
 			name = Presenter;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		2093624728F8758400455518 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				20072C8128F9E1AB003E99BA /* NetworkService.swift */,
 				2093624828F8759100455518 /* PostModel.swift */,
 				2093624B28F879BE00455518 /* MenuModel.swift */,
 				200594A2292EC3FA0052725A /* ButtonsModel.swift */,
@@ -167,10 +169,64 @@
 		2093624A28F8797700455518 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2093623228F862AD00455518 /* Info.plist */,
 				2093622F28F862AD00455518 /* LaunchScreen.storyboard */,
 				2093622D28F862AD00455518 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		374D69F029312E6100C7A5F4 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2093622428F862AA00455518 /* AppDelegate.swift */,
+				2093622628F862AA00455518 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		374D69F129312E7700C7A5F4 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				2093624428F8735D00455518 /* Presenter */,
+				2093623E28F863E100455518 /* VIews */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		374D69F229312ECF00C7A5F4 /* CoreLayer */ = {
+			isa = PBXGroup;
+			children = (
+				374D69F92931336B00C7A5F4 /* Network */,
+				2093624728F8758400455518 /* Models */,
+			);
+			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		374D69F329312EDC00C7A5F4 /* NetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+				20072C8128F9E1AB003E99BA /* NetworkService.swift */,
+				374D69F429312F6C00C7A5F4 /* NetworkError.swift */,
+			);
+			path = NetworkClient;
+			sourceTree = "<group>";
+		};
+		374D69F82931335C00C7A5F4 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				374D69F62931335900C7A5F4 /* Mapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		374D69F92931336B00C7A5F4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				374D69F82931335C00C7A5F4 /* Mapper */,
+				374D69F329312EDC00C7A5F4 /* NetworkClient */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +303,7 @@
 				2093624628F8736800455518 /* Presenter.swift in Sources */,
 				2093624928F8759100455518 /* PostModel.swift in Sources */,
 				2093624C28F879BE00455518 /* MenuModel.swift in Sources */,
+				374D69F72931335900C7A5F4 /* Mapper.swift in Sources */,
 				2093622928F862AA00455518 /* MenuView.swift in Sources */,
 				20072C8228F9E1AB003E99BA /* NetworkService.swift in Sources */,
 				2093623928F8634300455518 /* TabBarController.swift in Sources */,
@@ -261,6 +318,7 @@
 				2093624028F863F800455518 /* BasketView.swift in Sources */,
 				2093624E28F87E0300455518 /* MenuTableView.swift in Sources */,
 				2093622728F862AA00455518 /* SceneDelegate.swift in Sources */,
+				374D69F529312F6C00C7A5F4 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FoodStore/Info.plist;
+				INFOPLIST_FILE = FoodStore/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -426,7 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FoodStore/Info.plist;
+				INFOPLIST_FILE = FoodStore/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
