@@ -75,14 +75,12 @@ extension BannersCollection: UICollectionViewDataSource, UICollectionViewDelegat
         NetworkService().request(for: stringUrl) { result in
             guard let data = try? result.get() else { return }
             Mapper().parse(Cat.self, from: data) { image in
-                let _ = image.map { success in
-                    guard let imageName = success.file else { return }
-                    guard let url = URL(string: imageName) else { return }
-                    guard let data = try? Data(contentsOf: url, options: []) else { return }
-                    guard let image = UIImage(data: data) else { return }
-                    DispatchQueue.main.async {
-                        cell.photoImage.image = image
-                    }
+                guard let imageName = try? image.get().file else { return }
+                guard let url = URL(string: imageName) else { return }
+                guard let data = try? Data(contentsOf: url, options: []) else { return }
+                guard let image = UIImage(data: data) else { return }
+                DispatchQueue.main.async {
+                    cell.photoImage.image = image
                 }
             }
         }
