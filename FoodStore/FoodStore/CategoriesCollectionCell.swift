@@ -23,6 +23,7 @@ class CategoriesCollectionCell: UICollectionViewCell {
     }()
     
     var isFlagged = false
+    var previousIndex = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,8 +47,8 @@ class CategoriesCollectionCell: UICollectionViewCell {
         let indexValue = Int(indexPath.row)
         let selectedButton = ButtonsModel.buttonsArray[indexValue]
         self.button.setTitle(selectedButton, for: .normal)
-//        print("1")
-//        print(ButtonsModel.flagsArray)
+        print("1")
+        print(ButtonsModel.flagsArray)
         if indexValue == 0 {
             button.backgroundColor = ButtonsModel.ButtonColors.backgroundPink
             button.setTitleColor(ButtonsModel.ButtonColors.titleBrightPink, for: .selected)
@@ -57,25 +58,33 @@ class CategoriesCollectionCell: UICollectionViewCell {
     
     @objc
     func buttonPressed(){
-//        print("2")
-//        print(ButtonsModel.flagsArray)
+        print("2")
+        print(previousIndex)
+        print(ButtonsModel.flagsArray)
         button.backgroundColor = ButtonsModel.ButtonColors.backgroundPink
         button.setTitleColor(ButtonsModel.ButtonColors.titleBrightPink, for: .selected)
-        //flag for selection -> index comes from where?
-        ButtonsModel.flagsArray[1] = true
-//        print("3")
-//        print(ButtonsModel.flagsArray)
-        //flag for previous to be clear
-        clearFlag(indexSelected: 1)
+        guard let selectedButton = button.titleLabel?.text else { return }
+        guard let buttonIndexString = ButtonsModel.buttonsArray.firstIndex(of: selectedButton)?.description else { return }
+        guard let index = Int(buttonIndexString) else { return }
+        ButtonsModel.flagsArray[index] = true
+        print("3")
+        print(previousIndex)
+        print(ButtonsModel.flagsArray)
+        clearFlag(indexSelected: 0)
+        previousIndex = selectedButton
     }
     
     func clearFlag(indexSelected: Int){
-//        print("4")
-        ButtonsModel.flagsArray.enumerated().forEach { index, flag in
-            if flag == true && index != indexSelected {
-                button.backgroundColor = ButtonsModel.ButtonColors.backgroundWhite
-                button.setTitleColor(ButtonsModel.ButtonColors.titleLightPink, for: .selected)
-            }
-        }
+        print("4")
+        print(previousIndex)
+        print(ButtonsModel.flagsArray)
+//        button.backgroundColor = ButtonsModel.ButtonColors.backgroundWhite
+//        button.setTitleColor(ButtonsModel.ButtonColors.titleLightPink, for: .selected)
+        ButtonsModel.flagsArray[indexSelected] = false
+        print("5")
+        print(previousIndex)
+        print(ButtonsModel.flagsArray)
+//        uploadButtons(for: IndexPath(row: indexSelected, section: 0))
+//        }
     }
 }

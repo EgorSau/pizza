@@ -83,7 +83,7 @@ extension MenuTableView: UITableViewDelegate, UITableViewDataSource {
         let view = CategoriesCollection()
         view.closure = { [weak self] indexPath in
 //            guard let self = self else { return }
-            self?.loadDataToDataSource(fromModel: Presenter(category: ButtonsModel().returnButtonName(for: indexPath)))
+//            self?.loadDataToDataSource(fromModel: Presenter(category: ButtonsModel().returnButtonName(for: indexPath)))
 //            print(ButtonsModel().returnButtonName(for: indexPath))
 //            print("CLOSURE WORKS")
         }
