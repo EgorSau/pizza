@@ -72,7 +72,20 @@ extension BannersCollection: UICollectionViewDataSource, UICollectionViewDelegat
         cell.contentMode = .scaleAspectFit
         
         //MARK: function for assets
-//        cell.uploadPhotos(for: indexPath)
+        NetworkService().request(for: stringUrl) { result in
+            guard let data = try? result.get() else { return }
+            Mapper().parse(Cat.self, from: data) { image in
+                let _ = image.map { success in
+                    guard let imageName = success.file else { return }
+                    guard let url = URL(string: imageName) else { return }
+                    guard let data = try? Data(contentsOf: url, options: []) else { return }
+                    guard let image = UIImage(data: data) else { return }
+                    DispatchQueue.main.async {
+                        cell.photoImage.image = image
+                    }
+                }
+            }
+        }
         
         return cell
     }
