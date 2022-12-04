@@ -10,16 +10,16 @@ import UIKit
 protocol ViewModelProtocol {}
 
 protocol Setupable {
-    func setup(with viewModel: ViewModelProtocol)
+    func setup(with viewModel: Food)
 }
 
 class MenuTableViewCell: UITableViewCell {
     
-    struct ViewModel: ViewModelProtocol {
-        var image: String
-        var title: String
-        var description: String
-        var price: String
+    struct ViewModel: Food {
+        let image: String
+        let title: String
+        let description: String?
+        let price: Int
     }
     
     private lazy var postStack: UIStackView = {
@@ -126,13 +126,10 @@ class MenuTableViewCell: UITableViewCell {
 }
 
 extension MenuTableViewCell: Setupable {
-    
-    func setup(with viewModel: ViewModelProtocol) {
-        guard let viewModel = viewModel as? ViewModel else { return }
-        
+    func setup(with viewModel: Food) {
         self.pizzaImage.image = UIImage(named: viewModel.image)
         self.titleLabel.text = viewModel.title
         self.descriptionLabel.text = viewModel.description
-        self.priceLabel.text = viewModel.price
+        self.priceLabel.text = "от \(viewModel.price) р"
     }
 }

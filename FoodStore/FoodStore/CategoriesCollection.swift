@@ -9,6 +9,8 @@ import UIKit
 
 class CategoriesCollection: UIView {
     
+    private var categories: [Category] = []
+    
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -28,8 +30,6 @@ class CategoriesCollection: UIView {
         return collectionView
     }()
     
-    var closure: ((IndexPath) -> Void)?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.collectionView.reloadData()
@@ -37,6 +37,11 @@ class CategoriesCollection: UIView {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup(withCategories categories: [Category]) {
+        self.categories = categories
+        self.collectionView.reloadData()
     }
     
     private func setupView(){
@@ -59,7 +64,7 @@ class CategoriesCollection: UIView {
 extension CategoriesCollection: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return self.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -67,9 +72,7 @@ extension CategoriesCollection: UICollectionViewDataSource, UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-//        cell.uploadButtons(for: indexPath)
-        self.closure?(indexPath)
-//        cell.indexValue = indexPath
+        cell.setup(withCategory: categories[indexPath.row])
         return cell
     }
     

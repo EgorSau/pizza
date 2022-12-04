@@ -28,7 +28,7 @@ struct Drink: Food {
     let price: Int
 }
 
-struct Sauce: Food {
+struct Combo: Food {
     let image: String
     let title: String
     let description: String?

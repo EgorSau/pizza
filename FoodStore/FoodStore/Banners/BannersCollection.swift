@@ -66,12 +66,7 @@ extension BannersCollection: UICollectionViewDataSource, UICollectionViewDelegat
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-        cell.backgroundColor = .systemPink
-        cell.layer.cornerRadius = 10
-        cell.clipsToBounds = true
-        cell.contentMode = .scaleAspectFit
         
-        //MARK: function for assets
         NetworkService().request(for: stringUrl) { result in
             guard let data = try? result.get() else { return }
             Mapper().parse(Cat.self, from: data) { image in
@@ -84,6 +79,11 @@ extension BannersCollection: UICollectionViewDataSource, UICollectionViewDelegat
                 }
             }
         }
+
+        cell.backgroundColor = .systemPink
+        cell.clipsToBounds = true
+        cell.layer.cornerRadius = 10
+        cell.contentMode = .scaleAspectFit
         
         return cell
     }
