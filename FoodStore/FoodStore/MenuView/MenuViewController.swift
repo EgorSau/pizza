@@ -94,20 +94,23 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
             guard let category = self.mock[.category] as? [Category:[Food]] else { return cell }
             category.forEach { key, value in
 //                if key.isSelected {
-//                if key.name == "Пицца" {
-//                    cell.setup(with: value[indexPath.row])
-//                    key.isSelected.toggle()
-//                }
-                switch key.priority {
-                case 1:
-                    cell.setup(with: value[1])
-                case 2:
-                    cell.setup(with: value[2])
-                case 3:
-                    cell.setup(with: value[3])
-                default:
-                    break
+                if key.name == "Пицца" {
+                    cell.setup(with: value[indexPath.row])
+                    key.isSelected.toggle()
                 }
+                // надо чтобы Категория Пицца была в списке первая
+                // надо чтобы при выборе категории выбиралось соответствующее меню
+                // надо 
+//                switch key.priority {
+//                case 1:
+//                    cell.setup(with: value[1])
+//                case 2:
+//                    cell.setup(with: value[2])
+//                case 3:
+//                    cell.setup(with: value[3])
+//                default:
+//                    break
+//                }
             }
             return cell
         default:
