@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol CategoryHeaderViewDelegate: AnyObject {
+    func didSelectNewCategory(_ newSelectedCategory: String)
+}
+
 class CategoriesCollection: UIView {
     
     private var categories: [Category] = []
+    weak var delegate: CategoryHeaderViewDelegate?
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -68,8 +73,12 @@ extension CategoriesCollection: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as? CategoriesCollectionCell else { return }
-        print("COLLECTION CELL SELECTED")
+        let categoriesSorted = categories.sorted(by: {$0.priority<$1.priority})
+        if categoriesSorted[indexPath.row].isSelected == false {
+            categoriesSorted[indexPath.row].isSelected.toggle()
+        }
+        self.delegate?.didSelectNewCategory(categoriesSorted[indexPath.row].name)
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -77,9 +86,10 @@ extension CategoriesCollection: UICollectionViewDataSource, UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-        cell.setup(withCategory: categories[indexPath.row])
-        if categories[indexPath.row].isSelected {
-            print("SELECTED CATEGORY: \(categories[indexPath.row].name)")
+        let categoriesSorted = categories.sorted(by: {$0.priority<$1.priority})
+        cell.setup(withCategory: categoriesSorted[indexPath.row])
+        if categoriesSorted[indexPath.row].isSelected {
+            categoriesSorted[indexPath.row].isSelected.toggle()
         }
         return cell
     }

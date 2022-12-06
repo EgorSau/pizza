@@ -23,7 +23,7 @@ final class MenuViewController: UIViewController {
     }()
     
     private var mock: [Section: Any] = [:]
-    
+    private var selectedCategory = "Пицца"
     
     // MARK: Init
     
@@ -93,24 +93,9 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
             }
             guard let category = self.mock[.category] as? [Category:[Food]] else { return cell }
             category.forEach { key, value in
-//                if key.isSelected {
-                if key.name == "Пицца" {
+                if key.name == self.selectedCategory {
                     cell.setup(with: value[indexPath.row])
-                    key.isSelected.toggle()
                 }
-                // надо чтобы Категория Пицца была в списке первая
-                // надо чтобы при выборе категории выбиралось соответствующее меню
-                // надо 
-//                switch key.priority {
-//                case 1:
-//                    cell.setup(with: value[1])
-//                case 2:
-//                    cell.setup(with: value[2])
-//                case 3:
-//                    cell.setup(with: value[3])
-//                default:
-//                    break
-//                }
             }
             return cell
         default:
@@ -125,6 +110,7 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
             return BannersCollection()
         case 1:
             let collection = CategoriesCollection()
+            collection.delegate = self
             var categoryArray = [Category]()
             guard let category = self.mock[.category] as? [Category:[Food]] else { return UIView() }
             category.forEach { key, value in
@@ -156,6 +142,15 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
             return 180
         default:
             return 0
+        }
+    }
+}
+
+extension MenuViewController: CategoryHeaderViewDelegate {
+    func didSelectNewCategory(_ newSelectedCategory: String) {
+        self.selectedCategory = newSelectedCategory
+        for row in 0...3 {
+            self.tableView.reloadRows(at: [IndexPath(row: row, section: 1)], with: .fade)
         }
     }
 }
