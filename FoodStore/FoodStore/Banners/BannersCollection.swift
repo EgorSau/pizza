@@ -9,8 +9,6 @@ import UIKit
 
 class BannersCollection: UIView {
     
-    var images = [UIImage]()
-    
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -30,9 +28,8 @@ class BannersCollection: UIView {
         return collectionView
     }()
     
-    override init(frame: CGRect, images: [UIImage]) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.images = images
         self.setupView()
     }
     

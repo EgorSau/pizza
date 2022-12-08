@@ -97,8 +97,7 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            let images = self.fetchBanners()
-            return BannersCollection(frame: self.view.frame, images: images)
+            return BannersCollection()
         case 1:
             let collection = CategoriesCollection()
             collection.delegate = self
@@ -134,25 +133,5 @@ extension MenuViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             return 0
         }
-    }
-}
-
-extension MenuViewController {
-    func fetchBanners() -> [UIImage] {
-        var imagesArray = [UIImage]()
-        NetworkService().request(for: stringUrl) { result in
-            guard let data = try? result.get() else { return }
-            Mapper().parse(Cat.self, from: data) { image in
-                guard let imageName = try? image.get().file else { return }
-                guard let url = URL(string: imageName) else { return }
-                guard let data = try? Data(contentsOf: url, options: []) else { return }
-                guard let image = UIImage(data: data) else { return }
-//                DispatchQueue.main.async {
-//                    cell.photoImage.image = image
-//                }
-                imagesArray.append(image)
-            }
-        }
-        return imagesArray
     }
 }
